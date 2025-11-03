@@ -3,6 +3,13 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+const FarmerSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+});
+
+const Farmer = mongoose.model("Field", FarmerSchema);
+
 dotenv.config();
 
 const app = express();
@@ -10,15 +17,12 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/api/fields", async (req, res) => {
-  res.json({ data: {
-    fields: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  } });
+  const farmers = await Farmer.find();
+  res.json({ data: { farmers } });
 });
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
-
-/* eslint-disable */ console.log('process.env', process.env)
 
 mongoose
   .connect(MONGO_URI)
