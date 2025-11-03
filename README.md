@@ -1,6 +1,6 @@
 # Proyecto DAW - Aplicación Full Stack
 
-**[Read in English](README_EN.md)**
+**[Read in English](docs/README_EN.md)**
 
 Una aplicación web full-stack moderna construida con React y Node.js, desarrollada como parte del curso DAW (Desarrollo de Aplicaciones Web). Este proyecto demuestra prácticas profesionales de desarrollo web incluyendo diseño de API RESTful, containerización con Docker y un flujo de trabajo completo listo para CI/CD.
 
@@ -46,7 +46,7 @@ Esta aplicación sigue una arquitectura orientada a microservicios con una clara
 Para información detallada sobre la arquitectura de despliegue en AWS, incluyendo instrucciones de configuración:
 
 - **[Documentación de Despliegue AWS (Español)](docs/AWS_DEPLOYMENT_ES.md)**
-- **[AWS Deployment Documentation (English)](docs/AWS_DEPLOYMENT.md)**
+- **[AWS Deployment Documentation (English)](docs/AWS_DEPLOYMENT_EN.md)**
 
 ## Requisitos Previos
 
