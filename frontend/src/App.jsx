@@ -4,7 +4,7 @@ export default function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL, { method: "GET", headers: { "Content-Type": "application/json" } })
+    fetch("/api", { method: "GET", headers: { "Content-Type": "application/json" } })
       .then((response) => response.json())
       .then((data) => {
         setMessage(data.data.message);
