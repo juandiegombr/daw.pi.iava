@@ -1,160 +1,186 @@
-# DAW Project - Full Stack Application
+# Proyecto DAW - Aplicación Full Stack
 
-A modern full-stack web application built with React and Node.js, developed as part of the DAW (Desarrollo de Aplicaciones Web) course. This project demonstrates professional web development practices including RESTful API design, containerization with Docker, and a complete CI/CD-ready development workflow.
+**[Read in English](README_EN.md)**
 
-## Overview
+Una aplicación web full-stack moderna construida con React y Node.js, desarrollada como parte del curso DAW (Desarrollo de Aplicaciones Web). Este proyecto demuestra prácticas profesionales de desarrollo web incluyendo diseño de API RESTful, containerización con Docker y un flujo de trabajo completo listo para CI/CD.
 
-This application follows a microservices-oriented architecture with a clear separation between frontend and backend services. The backend provides a robust REST API built with Express.js and MongoDB, while the frontend delivers a responsive user interface using React and Vite for optimal performance. The entire stack is containerized using Docker, enabling consistent development and deployment environments.
+## Descripción General
 
-**Key Features:**
-- RESTful API with Express.js and MongoDB/Mongoose ODM
-- Modern React frontend with Vite for fast development and builds
-- Dockerized development and production environments
-- Hot module replacement (HMR) for rapid development
-- Environment-based configuration management
-- Makefile automation for common tasks
+Esta aplicación sigue una arquitectura orientada a microservicios con una clara separación entre servicios frontend y backend. El backend proporciona una API REST robusta construida con Express.js y MongoDB, mientras que el frontend ofrece una interfaz de usuario responsiva usando React y Vite para un rendimiento óptimo. Todo el stack está containerizado usando Docker, permitiendo entornos de desarrollo y despliegue consistentes.
 
-## Tech Stack
+**Características Principales:**
+
+- API RESTful con Express.js y MongoDB/Mongoose ODM
+- Frontend moderno con React y Vite para desarrollo y compilaciones rápidas
+- Entornos de desarrollo y producción dockerizados
+- Reemplazo de módulos en caliente (HMR) para desarrollo rápido
+- Gestión de configuración basada en entorno
+- Automatización con Makefile para tareas comunes
+
+## Stack Tecnológico
 
 ### Backend
-- **Node.js** with **Express.js** - REST API server
-- **MongoDB** with **Mongoose** - Database and ODM
+
+- **Node.js** con **Express.js** - Servidor API REST
+- **MongoDB** con **Mongoose** - Base de datos y ODM
 - **CORS** - Cross-Origin Resource Sharing
-- **dotenv** - Environment variable management
+- **dotenv** - Gestión de variables de entorno
 
 ### Frontend
-- **React** - UI library
-- **Vite** - Build tool and dev server
+
+- **React** - Biblioteca de UI
+- **Vite** - Herramienta de compilación y servidor de desarrollo
 
 ### DevOps
-- **Docker** & **Docker Compose** - Containerization
-- **Makefile** - Command automation
 
-## Prerequisites
+- **Docker** & **Docker Compose** - Containerización
+- **Makefile** - Automatización de comandos
+- **GitHub Actions** - Pipelines CI/CD
+- **AWS** - Infraestructura de despliegue en la nube
+  - **S3** - Alojamiento estático del frontend
+  - **EC2** - Servidor API backend
+  - **CloudFront** - CDN y origen unificado
 
-Before setting up the project, make sure you have the following installed:
+## Despliegue en AWS
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+Para información detallada sobre la arquitectura de despliegue en AWS, incluyendo instrucciones de configuración:
+
+- **[Documentación de Despliegue AWS (Español)](docs/AWS_DEPLOYMENT_ES.md)**
+- **[AWS Deployment Documentation (English)](docs/AWS_DEPLOYMENT.md)**
+
+## Requisitos Previos
+
+Antes de configurar el proyecto, asegúrate de tener instalado lo siguiente:
+
+- [Node.js](https://nodejs.org/) (v18 o superior recomendado)
 - [Docker](https://www.docker.com/) & Docker Compose
-- [Make](https://www.gnu.org/software/make/) (usually pre-installed on Linux/macOS)
+- [Make](https://www.gnu.org/software/make/) (generalmente preinstalado en Linux/macOS)
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
 daw.pi.iava/
-├── backend/          # Express.js API
-├── frontend/         # React application
-├── docker-compose.yml       # Production Docker configuration
-├── docker-compose.dev.yml   # Development Docker configuration
-├── makefile         # Build and deployment commands
-├── .env             # Environment variables (not in git)
-└── .env.example     # Example environment variables
+├── backend/          # API Express.js
+├── frontend/         # Aplicación React
+├── docker-compose.yml       # Configuración Docker de producción
+├── docker-compose.dev.yml   # Configuración Docker de desarrollo
+├── makefile         # Comandos de compilación y despliegue
+├── .env             # Variables de entorno (no en git)
+└── .env.example     # Variables de entorno de ejemplo
 ```
 
-## Installation & Setup
+## Instalación y Configuración
 
-### 1. Clone the Repository
+### 1. Clonar el Repositorio
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/juandiegombr/daw.pi.iava.git
 cd daw.pi.iava
 ```
 
-### 2. Configure Environment Variables
+### 2. Configurar Variables de Entorno
 
-Copy the example environment file and configure it:
+Copia el archivo de ejemplo de entorno y configúralo:
 
 ```bash
 cp .env.example .env
 ```
 
-Edit the `.env` file with your MongoDB credentials:
+Edita el archivo `.env` con tus credenciales de MongoDB:
 
 ```env
-MONGO_USER=your-mongo-user
-MONGO_PASSWORD=your-mongo-password
+MONGO_USER=tu-usuario-mongo
+MONGO_PASSWORD=tu-contraseña-mongo
 ```
 
-### 3. Choose Your Setup Method
+### 3. Elige tu Método de Configuración
 
-You can run this project in two ways:
+Puedes ejecutar este proyecto de dos maneras:
 
-#### Option A: Using Docker (Recommended)
+#### Opción A: Usando Docker (Recomendado)
 
-**Development Mode** (with hot reload):
+**Modo Desarrollo** (con recarga en caliente):
+
 ```bash
-make dev-build    # Build containers
-make dev-up       # Start in detached mode
-# or
-make dev-upf      # Start in foreground mode
+make dev-build    # Construir contenedores
+make dev-up       # Iniciar en modo separado
+# o
+make dev-upf      # Iniciar en modo primer plano
 ```
 
-**Production Mode**:
+**Modo Producción**:
+
 ```bash
-make prod-build   # Build containers
-make prod-up      # Start in detached mode
-# or
-make prod-upf     # Start in foreground mode
+make prod-build   # Construir contenedores
+make prod-up      # Iniciar en modo separado
+# o
+make prod-upf     # Iniciar en modo primer plano
 ```
 
-#### Option B: Local Development (without Docker)
+#### Opción B: Desarrollo Local (sin Docker)
 
 **Backend**:
+
 ```bash
 cd backend
 npm install
-npm run dev       # Start with nodemon (auto-reload)
+npm run dev       # Iniciar con nodemon (auto-recarga)
 ```
 
 **Frontend**:
+
 ```bash
 cd frontend
 npm install
-npm run dev       # Start Vite dev server
+npm run dev       # Iniciar servidor de desarrollo Vite
 ```
 
 **MongoDB**:
-You'll need to run MongoDB locally or use a cloud service like MongoDB Atlas.
+Necesitarás ejecutar MongoDB localmente o usar un servicio en la nube como MongoDB Atlas.
 
-## Available Commands
+## Comandos Disponibles
 
-### Makefile Commands
+### Comandos Makefile
 
-This project uses **Make** as a standard way to organize and document development commands. Make provides a consistent interface for common tasks across different projects and is widely adopted in professional development workflows.
+Este proyecto usa **Make** como una forma estándar de organizar y documentar comandos de desarrollo. Make proporciona una interfaz consistente para tareas comunes en diferentes proyectos y es ampliamente adoptado en flujos de trabajo de desarrollo profesional.
 
-To see all available commands with descriptions, run:
+Para ver todos los comandos disponibles con descripciones, ejecuta:
 
 ```bash
 make help
 ```
 
-This will display a formatted list of all available targets including commands for building, starting, stopping, and monitoring both development and production environments.
+Esto mostrará una lista formateada de todos los objetivos disponibles incluyendo comandos para construir, iniciar, detener y monitorear entornos de desarrollo y producción.
 
-### NPM Scripts
+### Scripts NPM
 
 **Backend** (`backend/package.json`):
-- `npm start` - Run backend in production mode
-- `npm run dev` - Run backend with nodemon (development)
+
+- `npm start` - Ejecutar backend en modo producción
+- `npm run dev` - Ejecutar backend con nodemon (desarrollo)
 
 **Frontend** (`frontend/package.json`):
-- `npm run dev` - Start Vite dev server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
 
-## Accessing the Application
+- `npm run dev` - Iniciar servidor de desarrollo Vite
+- `npm run build` - Compilar para producción
+- `npm run preview` - Vista previa de compilación de producción
 
-Once running, you can access:
+## Acceder a la Aplicación
 
-- **Frontend**: http://localhost:5173 (Vite dev server)
-- **Backend API**: http://localhost:3000
+Una vez en ejecución, puedes acceder a:
+
+- **Frontend**: http://localhost:5173 (servidor de desarrollo Vite)
+- **API Backend**: http://localhost:3000
 - **MongoDB**: localhost:27017
 
-Test the backend API:
+Probar la API backend:
+
 ```bash
 curl http://localhost:3000/
 ```
 
-Expected response:
+Respuesta esperada:
+
 ```json
 {
   "data": {
@@ -163,45 +189,49 @@ Expected response:
 }
 ```
 
-## Troubleshooting
+## Solución de Problemas
 
-### Docker Issues
+### Problemas con Docker
 
-**Containers not starting?**
+**¿Contenedores no inician?**
+
 ```bash
 make dev-down
 make dev-rebuild
 ```
 
-**Check logs:**
+**Verificar logs:**
+
 ```bash
 make logs-dev-backend
 ```
 
-**Clean Docker resources:**
+**Limpiar recursos Docker:**
+
 ```bash
 docker system prune -a
 ```
 
-### Port Already in Use
+### Puerto Ya en Uso
 
-If you get a "port already in use" error, you can:
-- Stop the conflicting process
-- Change the port in the Docker Compose file
-- Change the PORT in your `.env` file
+Si obtienes un error "port already in use", puedes:
 
-## Development Workflow
+- Detener el proceso en conflicto
+- Cambiar el puerto en el archivo Docker Compose
+- Cambiar el PORT en tu archivo `.env`
 
-1. Start the development environment: `make dev-up`
-2. Make changes to your code (hot reload is enabled)
-3. Test your changes
-4. View logs if needed: `make logs-dev-backend`
-5. Stop when done: `make dev-down`
+## Flujo de Trabajo de Desarrollo
 
-## License
+1. Iniciar el entorno de desarrollo: `make dev-up`
+2. Realizar cambios en tu código (recarga en caliente habilitada)
+3. Probar tus cambios
+4. Ver logs si es necesario: `make logs-dev-backend`
+5. Detener cuando termines: `make dev-down`
+
+## Licencia
 
 ISC
 
-## Author
+## Autor
 
-DAW Student Project
+Proyecto Estudiante DAW
