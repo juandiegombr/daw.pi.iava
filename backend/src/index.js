@@ -16,11 +16,11 @@ app.get("/api/fields", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-// const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI;
 
-// mongoose
-//   .connect(MONGO_URI)
-//   .then(() => console.log("✅ MongoDB conectado"))
-//   .catch((err) => console.error("❌ Error conectando a Mongo:", err));
+mongoose
+  .connect(MONGO_URI)
+  .then(() => console.log("✅ MongoDB conectado"))
+  .catch((err) => console.error("❌ Error conectando a Mongo:", err));
 
 app.listen(PORT, () => console.log(`🚀 Backend corriendo en puerto ${PORT}`));
