@@ -18,9 +18,9 @@ const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI)
-  .then(() => console.log("✅ MongoDB conectado"))
-  .catch((err) => console.error("❌ Error conectando a Mongo:", err));
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ Error connecting to MongoDB:", err));
 
 app.use('/api/sensors', sensorsRouter);
 
-app.listen(PORT, () => console.log(`🚀 Backend corriendo en puerto ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Backend running on port ${PORT}`));

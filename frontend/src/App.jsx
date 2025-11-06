@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SensorCard from "./components/SensorCard";
+import SensorForm from "./components/SensorForm";
 
 export default function App() {
   const [sensors, setSensors] = useState([]);
@@ -20,6 +21,10 @@ export default function App() {
         setLoading(false);
       });
   }, []);
+
+  const handleSensorAdded = (newSensor) => {
+    setSensors((prev) => [...prev, newSensor]);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -68,6 +73,8 @@ export default function App() {
           </>
         )}
       </main>
+
+      <SensorForm onSensorAdded={handleSensorAdded} />
     </div>
   );
 }

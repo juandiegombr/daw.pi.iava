@@ -25,4 +25,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const sensor = new Sensor(req.body);
+    await sensor.save();
+    res.status(201).json({ data: { sensor } });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 export default router;
