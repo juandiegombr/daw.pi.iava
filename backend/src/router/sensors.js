@@ -35,6 +35,39 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { alias, type } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid sensor ID" });
+    }
+
+    if (!alias && !type) {
+      return res.status(400).json({ error: "At least one field (alias or type) must be provided" });
+    }
+
+    const updateData = {};
+    if (alias !== undefined) updateData.alias = alias;
+    if (type !== undefined) updateData.type = type;
+
+    const sensor = await Sensor.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true, runValidators: true }
+    );
+
+    if (!sensor) {
+      return res.status(404).json({ error: "Sensor not found" });
+    }
+
+    res.json({ data: { sensor } });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
