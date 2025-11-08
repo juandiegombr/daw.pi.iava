@@ -43,7 +43,7 @@ export default function SensorDataChart({ datapoints, sensor }) {
 
   // Prepare data for chart (reverse to show oldest to newest)
   const chartData = [...datapoints].reverse().map((dp) => ({
-    timestamp: formatTimestamp(dp.timestamp),
+    timestamp: dp.timestamp,
     value: dp.value,
     fullTimestamp: new Date(dp.timestamp).toLocaleString("es-ES"),
   }));
