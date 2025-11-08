@@ -8,6 +8,12 @@ Una aplicación web full-stack moderna construida con React y Node.js, desarroll
 
 Esta aplicación sigue una arquitectura orientada a microservicios con una clara separación entre servicios frontend y backend. El backend proporciona una API REST robusta construida con Express.js y MongoDB, mientras que el frontend ofrece una interfaz de usuario responsiva usando React y Vite para un rendimiento óptimo. Todo el stack está containerizado usando Docker, permitiendo entornos de desarrollo y despliegue consistentes.
 
+## Sobre el Proyecto
+
+Para entender la visión completa del proyecto, casos de uso y arquitectura del sistema:
+
+- **[Visión del Proyecto (Español)](docs/PROJECT_OVERVIEW_ES.md)** - Descripción detallada de la plataforma de monitoreo de sensores industriales
+
 **Características Principales:**
 
 - API RESTful con Express.js y MongoDB/Mongoose ODM
@@ -234,4 +240,4 @@ ISC
 
 ## Autor
 
-Proyecto Estudiante DAW
+Juan Diego Martín-Blas Ramos

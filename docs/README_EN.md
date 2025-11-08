@@ -1,12 +1,18 @@
 # DAW Project - Full Stack Application
 
-**[Leer en Español](README.md)**
+**[Leer en Español](../README.md)**
 
 A modern full-stack web application built with React and Node.js, developed as part of the DAW (Desarrollo de Aplicaciones Web) course. This project demonstrates professional web development practices including RESTful API design, containerization with Docker, and a complete CI/CD-ready development workflow.
 
 ## Overview
 
 This application follows a microservices-oriented architecture with a clear separation between frontend and backend services. The backend provides a robust REST API built with Express.js and MongoDB, while the frontend delivers a responsive user interface using React and Vite for optimal performance. The entire stack is containerized using Docker, enabling consistent development and deployment environments.
+
+## About the Project
+
+To understand the full project vision, use cases, and system architecture:
+
+- **[Project Overview (English)](PROJECT_OVERVIEW.md)** - Detailed overview of the industrial sensor monitoring platform
 
 **Key Features:**
 
@@ -234,4 +240,4 @@ ISC
 
 ## Author
 
-DAW Student Project
+Juan Diego Martín-Blas Ramos
