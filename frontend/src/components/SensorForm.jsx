@@ -66,9 +66,9 @@ export default function SensorForm({ onSensorAdded }) {
 
   return (
     <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+      <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6" role="dialog" aria-labelledby="dialog-title">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Nuevo Sensor</h2>
+          <h2 id="dialog-title" className="text-2xl font-bold text-gray-800">Nuevo Sensor</h2>
           <button
             onClick={() => setIsOpen(false)}
             className="text-gray-400 hover:text-gray-600 transition-colors"
