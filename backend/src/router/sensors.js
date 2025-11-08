@@ -35,4 +35,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid sensor ID" });
+    }
+
+    const sensor = await Sensor.findByIdAndDelete(id);
+
+    if (!sensor) {
+      return res.status(404).json({ error: "Sensor not found" });
+    }
+
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 export default router;
