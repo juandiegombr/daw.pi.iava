@@ -4,6 +4,8 @@
 
 **Repositorio GitHub:** [https://github.com/juandiegombr/daw.pi.iava](https://github.com/juandiegombr/daw.pi.iava)
 
+**URL aplicación:** [https://d12lcsgk45eqvv.cloudfront.net/](https://d12lcsgk45eqvv.cloudfront.net/)
+
 ---
 
 ## Resumen del Proyecto
@@ -70,25 +72,4 @@ Una aplicación web completa que demuestra prácticas profesionales de desarroll
 
 La aplicación está desplegada en AWS utilizando la siguiente arquitectura:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        CloudFront                           │
-│                                                             │
-│  ┌──────────────────────┐    ┌─────────────────────────┐    │
-│  │   /* (Frontend)      │    │   /api/* (Backend)      │    │
-│  │   ↓                  │    │   ↓                     │    │
-│  │   Bucket S3          │    │   Origen EC2            │────┼──────--------─┐
-│  └────────┬─────────────┘    └───────────┬─────────────┘    │               |
-└───────────┬──────────────────────────────┬──────────────────┘               |
-            |                              |                                  |
-    ┌───────┴─────────┐          ┌─────────┴──────────┐            ┌──────────┴─────────┐
-    │  S3 (Bucket)    │          │  EC2 (Node Server) │            |   EC2 (MongoDB)    │
-    │ Frontend: React │          │  Backend: Express  │            │   Base de Datos    │
-    │                 │          │  Puerto: 3000      │            │   Puerto: 27017    │
-    └───────┬─────────┘          └─────────┬──────────┘            └────────────────────┘
-            |                              |
-    ┌───────┴─────────┐          ┌─────────┴──────────┐
-    │  GitHub Actions │          │  GitHub Actions    │
-    │  (Frontend CD)  │          │  (Backend CD)      │
-    └─────────────────┘          └────────────────────┘
-```
+![Arquitectura AWS](assets/aws.png)
