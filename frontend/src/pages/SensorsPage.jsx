@@ -5,6 +5,7 @@ import EmptyState from "../components/EmptyState";
 import SensorList from "../components/SensorList";
 import SensorForm from "../components/SensorForm";
 import SensorEditForm from "../components/SensorEditForm";
+import ConfirmDialog from "../components/ConfirmDialog";
 
 export default function SensorsPage() {
   const [sensors, setSensors] = useState([]);
@@ -13,6 +14,8 @@ export default function SensorsPage() {
   const [deletingSensorId, setDeletingSensorId] = useState(null);
   const [deleteError, setDeleteError] = useState(null);
   const [editingSensor, setEditingSensor] = useState(null);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [sensorToDelete, setSensorToDelete] = useState(null);
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL;
@@ -33,13 +36,22 @@ export default function SensorsPage() {
     setSensors((prev) => [...prev, newSensor]);
   };
 
-  const handleDeleteSensor = async (sensorId) => {
-    setDeletingSensorId(sensorId);
+  const handleDeleteSensor = (sensorId) => {
+    const sensor = sensors.find(s => s._id === sensorId);
+    setSensorToDelete(sensor);
+    setShowDeleteConfirm(true);
+  };
+
+  const confirmDeleteSensor = async () => {
+    if (!sensorToDelete) return;
+
+    setDeletingSensorId(sensorToDelete._id);
     setDeleteError(null);
+    setShowDeleteConfirm(false);
 
     try {
       const API_URL = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${API_URL}/sensors/${sensorId}`, {
+      const response = await fetch(`${API_URL}/sensors/${sensorToDelete._id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -48,12 +60,18 @@ export default function SensorsPage() {
         throw new Error("Error al eliminar el sensor");
       }
 
-      setSensors((prev) => prev.filter((sensor) => sensor._id !== sensorId));
+      setSensors((prev) => prev.filter((sensor) => sensor._id !== sensorToDelete._id));
     } catch (err) {
       setDeleteError(err.message);
     } finally {
       setDeletingSensorId(null);
+      setSensorToDelete(null);
     }
+  };
+
+  const cancelDeleteSensor = () => {
+    setShowDeleteConfirm(false);
+    setSensorToDelete(null);
   };
 
   const handleEditSensor = (sensor) => {
@@ -100,6 +118,15 @@ export default function SensorsPage() {
           onClose={handleCloseEditForm}
         />
       )}
+      <ConfirmDialog
+        isOpen={showDeleteConfirm}
+        onConfirm={confirmDeleteSensor}
+        onCancel={cancelDeleteSensor}
+        title="Eliminar Sensor"
+        message={`¿Estás seguro de que deseas eliminar el sensor "${sensorToDelete?.alias}"? Esta acción no se puede deshacer.`}
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+      />
     </>
   );
 }

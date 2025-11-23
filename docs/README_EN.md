@@ -6,22 +6,13 @@ A modern full-stack web application built with React and Node.js, developed as p
 
 ## Overview
 
-This application follows a microservices-oriented architecture with a clear separation between frontend and backend services. The backend provides a robust REST API built with Express.js and MongoDB, while the frontend delivers a responsive user interface using React and Vite for optimal performance. The entire stack is containerized using Docker, enabling consistent development and deployment environments.
+This application is composed of a frontend and a backend part. The backend provides a robust REST API built with Express.js and MongoDB, while the frontend delivers a responsive user interface using React and Vite for optimal performance. The entire stack is containerized using Docker, enabling consistent development and deployment environments.
 
 ## About the Project
 
 To understand the full project vision, use cases, and system architecture:
 
 - **[Project Overview (English)](PROJECT_OVERVIEW.md)** - Detailed overview of the industrial sensor monitoring platform
-
-**Key Features:**
-
-- RESTful API with Express.js and MongoDB/Mongoose ODM
-- Modern React frontend with Vite for fast development and builds
-- Dockerized development and production environments
-- Hot module replacement (HMR) for rapid development
-- Environment-based configuration management
-- Makefile automation for common tasks
 
 ## Tech Stack
 
@@ -51,8 +42,8 @@ To understand the full project vision, use cases, and system architecture:
 
 For detailed information about the AWS deployment architecture, including setup instructions and configuration:
 
-- **[AWS Deployment Documentation (English)](docs/AWS_DEPLOYMENT_EN.md)**
-- **[Documentación de Despliegue AWS (Español)](docs/AWS_DEPLOYMENT_ES.md)**
+- **[AWS Deployment Documentation (English)](AWS_DEPLOYMENT_EN.md)**
+- **[Documentación de Despliegue AWS (Español)](AWS_DEPLOYMENT_ES.md)**
 
 ## Prerequisites
 
